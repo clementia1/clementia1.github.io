@@ -35,6 +35,8 @@ select {
   </div>
   
   <script type="text/babel">
+var destination = document.querySelector("#container");
+
 // Приложение
 var App = React.createClass({
   /*установка состояния*/
@@ -102,7 +104,7 @@ var ColorPicker = React.createClass({
   }
 });
 
-React.render(<App/>, document.querySelector('#container'));
+React.render(<App/>, destination);
   </script>
 </body>
   
