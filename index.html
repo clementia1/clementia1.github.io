@@ -56,79 +56,74 @@
   </div>
   
   <script type="text/babel">
-    var destination = document.querySelector("#container");
-  
-
-var TodoItems = React.createClass({
-  render: function() {
-     var todoEntries = this.props.entries;
-      
-          function createTasks(item) {
-      return <li key={item.key}>{item.text}</li>
-    }
- 
-    var listItems = todoEntries.map(createTasks);
-      
-        return (
-      <ul className="theList">
-        {listItems}
-      </ul>
-    );
-  }
-});
-
-var TodoList = React.createClass({
-    
+// Приложение
+var App = React.createClass({
+  /*установка состояния*/
   getInitialState: function() {
     return {
-      items: []
+      bgColor: "teal"
     };
   },
-    
-  addItem: function(e) {
-     
-      var itemArray = this.state.items;
-      
-      itemArray.push(
-  {
-    text: this._inputElement.value,
-    key: Date.now()
-  }
-);
-      
-        this.setState({
-    items: itemArray
-  });
- 
-  this._inputElement.value = "";
- 
-  e.preventDefault();
-},
-
-    
+  /*меняет состояние*/
+  handleColorChange: function (color) {
+    // когда состояние устанавливается напрямую,
+    // реакт не знает об этом, вот почему мы используем setState
+    this.setState({ bgColor: color });
+  },
+  /*для методов жизненного цикла*/
+  updateBackgroundColor: function () {
+    var body = document.querySelector('body')
+    body.style.background = this.state.bgColor
+  },
+  /*методы жизненного цикла*/
+  componentDidMount: function () { 
+    this.updateBackgroundColor()
+  },
+  componentDidUpdate: function () { 
+    this.updateBackgroundColor()
+  },
   render: function() {
-      return (
-        <div className="todoListMain">
-          <div className="header">
-            <form onSubmit={this.addItem}>
-            <input ref={(a) => this._inputElement = a}
-                   placeholder="enter task">
-            </input>
-              <button type="submit">add</button>
-            </form>
-          </div>
-            <TodoItems entries={this.state.items}/>
-        </div>
-      );
-    }
+    return (
+    /* вызвав заголовок здесь в компоненте, можно обращаться к this.props в шапке */
+      <div className="foo">
+        <h1>Hello, World!</h1>
+        <label>What color?
+          <ColorPicker value={this.state.bgColor} onColorChange={this.handleColorChange}/>
+        </label>
+      </div>
+    )
+  }
 });
 
-ReactDOM.render(
-  <div>
-    <TodoList/>
-  </div>,
-  destination
-);
+// компонент ColorPicker
+var ColorPicker = React.createClass({
+  propTypes: {
+    value: React.PropTypes.string.isRequired,
+    onColorChange: React.PropTypes.func
+  },
+  handleChange: function(e) {
+    e.preventDefault();
+    var color = e.target.value
+    
+    // если тому, кто нас (ColorPicker) отобразит, захочется узнать,
+    // когда изменился цвет, дайте ему знать
+    if (this.props.onColorChange)
+      this.props.onColorChange(color);
+  },
+  render: function() {
+    return (
+      <select value={this.props.value} onChange={this.handleChange}>
+        <option value="orangered">orangered</option>
+        <option value="teal">teal</option>
+        <option value="orange">orange</option>
+        <option value="indigo">indigo</option>
+        <option value="red">red</option>
+      </select>
+    )
+  }
+});
+
+React.render(<App/>, document.querySelector('#container'));
   </script>
 </body>
   
