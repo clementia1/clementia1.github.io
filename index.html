@@ -7,44 +7,23 @@
   <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
   
-  <style>
-  body {
-  padding: 50px;
-  background-color: #66CCFF;
-  font-family: sans-serif;
+  <style>.foo {
+  margin: 60px auto;
+  width: 80%;
 }
-.todoListMain .header input {
-  padding: 10px;
-  font-size: 16px;
-  border: 2px solid #FFF;
+
+h1, label {
+  font-family: 'Arvo', serif;
+  color: white;
 }
-.todoListMain .header button {
-  padding: 10px;
-  font-size: 16px;
-  margin: 10px;
-  background-color: #0066FF;
-  color: #FFF;
-  border: 2px solid #0066FF;
+
+@media screen and (min-width: 500px) {
+  .foo {
+    width: 40%;
+  }
 }
- 
-.todoListMain .header button:hover {
-  background-color: #003399;
-  border: 2px solid #003399;
-  cursor: pointer;
-}
-      
-.todoListMain .theList {
-  list-style: none;
-  padding-left: 0;
-  width: 255px;
-}
- 
-.todoListMain .theList li {
-  color: #333;
-  background-color: rgba(255,255,255,.5);
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 5px;
+select {
+  outline: none;
 }
   </style>
 </head>
