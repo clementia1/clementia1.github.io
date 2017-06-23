@@ -80,10 +80,7 @@ var App = React.createClass({
 
 // компонент ColorPicker
 var ColorPicker = React.createClass({
-  propTypes: {
-    value: React.PropTypes.string.isRequired,
-    onColorChange: React.PropTypes.func
-  },
+
   handleChange: function(e) {
     e.preventDefault();
     var color = e.target.value
