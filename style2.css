@@ -1,0 +1,43 @@
+.slider {
+	width: 500px;
+	height: 300px;
+	display: flex;
+	overflow: hidden;
+}
+
+.slide-1 {
+	background: url("http://supremepetfoods.com/wp-content/uploads/2017/02/Syrian.jpg");
+    max-height: 100%;
+    height: 100%;
+    min-width: 500px;
+}
+
+.slide-2 {
+	background: url("http://www.takepart.com/sites/default/files/styles/large/public/winner-comedy-wildlife-MAIN1.jpg");
+    max-height: 100%;
+    height: 100%;
+    min-width: 500px;
+}
+
+.slide-3 {
+	background: url("https://i.ytimg.com/vi/xkxjNZComZg/maxresdefault.jpg");
+    max-height: 100%;
+    height: 100%;
+    min-width: 500px;
+}
+
+.slide-4 {
+	background: url("https://fthmb.tqn.com/vC7fWzLW1EwCCFKkM9ogpzcjUhQ=/3790x2627/filters:fill(auto,1)/mesocricetus-auratus-golden-hamster-syrian-hamster-portrait-522115762-58865c535f9b58bdb3adf683.jpg");
+    max-height: 100%;
+    height: 100%;
+    min-width: 500px;
+}
+
+.slide {
+	background-size: cover;
+	display: none;
+}
+
+.active {
+	display: block;
+}
